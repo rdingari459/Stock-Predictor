@@ -7,6 +7,7 @@ from datetime import datetime
 ticker = "AAPL"
 df = yf.download(ticker, period="1y", interval="1d")
 df.reset_index(inplace=True)
+df.columns = df.columns.droplevel(1) 
 
 # Save into DuckDB
 conn = duckdb.connect("stocks.duckdb")
